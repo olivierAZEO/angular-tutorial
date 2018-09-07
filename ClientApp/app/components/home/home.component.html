@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div>
+        <nav class="navbar navbar-fixed-top navbar-inverse bg-inverse">
+            <div class="container">
+                <a class="navbar-brand">Diseuse de bonnes nouvelles</a>
+                <ul class="nav navbar-nav" routerLinkActive="active">
+                    <li class="nav-item"><a class="nav-link" [routerLink]="['daily-life', _name]">Vie Quotidienne</a></li>
+                    <li class="nav-item"><a class="nav-link" [routerLink]="['work', _name]">Travail</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="body-content">
+        <form (ngSubmit)="onSubmit()" #nameForm="ngForm" class="form-inline">
+            <label for="name">Nom</label>
+            <input type="text" name="name" class="form-control" pattern="^[A-Z]{1}[a-z]*$" [(ngModel)]="input" required />
+            <button type="submit" class="btn btn-success" [disabled]="!nameForm.form.valid">Dis-moi</button>
+        </form>
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
